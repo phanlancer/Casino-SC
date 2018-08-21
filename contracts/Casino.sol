@@ -2,8 +2,10 @@ pragma solidity ^0.4.23;
 
 import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 
-/// @title Contract to bet Ether for a number and win randomly when the number of bets is met.
-/// @author Merunas Grincalaitis
+/**
+ * @title Contract to bet Ether for a number and win randomly when the number of bets is met.
+ * @author phanlancer
+ */
 contract Casino is usingOraclize {
   address owner;
 
@@ -40,9 +42,11 @@ contract Casino is usingOraclize {
     if(numberOfBets >= maxAmountOfBets) _;
   }
 
-  /// @notice Constructor that's used to configure the minimum bet per game and the max amount of bets
-  /// @param _minimumBet The minimum bet that each user has to make in order to participate in the game
-  /// @param _maxAmountOfBets The max amount of bets that are required for each game
+  /**
+   * @notice Constructor that's used to configure the minimum bet per game and the max amount of bets
+   * @param _minimumBet The minimum bet that each user has to make in order to participate in the game
+   * @param _maxAmountOfBets The max amount of bets that are required for each game
+   */
   constructor(uint _minimumBet, uint _maxAmountOfBets) {
     owner = msg.sender;
 
@@ -54,9 +58,11 @@ contract Casino is usingOraclize {
     oraclize_setProof(proofType_Ledger);
   }
 
-  /// @notice Check if a player exists in the current game
-  /// @param player The address of the player to check
-  /// @return bool Returns true is it exists or false if it doesn't
+  /**
+   * @notice Check if a player exists in the current game
+   * @param player The address of the player to check
+   * @return bool Returns true is it exists or false if it doesn't
+   */
   function checkPlayerExists(address player) public view returns(bool){
     if(playerBetsNumber[player] > 0)
       return true;
@@ -64,8 +70,10 @@ contract Casino is usingOraclize {
       return false;
   }
 
-  /// @notice To bet for a number by sending Ether
-  /// @param numberToBet The number that the player wants to bet for. Must be between 1 and 10 both inclusive
+  /**
+   * @notice To bet for a number by sending Ether
+   * @param numberToBet The number that the player wants to bet for. Must be between 1 and 10 both inclusive
+   */
   function bet(uint numberToBet) public payable{
 
     // Check that the max amount of bets hasn't been met yet
@@ -92,9 +100,11 @@ contract Casino is usingOraclize {
     if(numberOfBets >= maxAmountOfBets) generateNumberWinner();
   }
 
-  /// @notice Generates a random number between 1 and 10 both inclusive.
-  /// Must be payable because oraclize needs gas to generate a random number.
-  /// Can only be executed when the game ends.
+  /**
+   * @notice Generates a random number between 1 and 10 both inclusive.
+   * Must be payable because oraclize needs gas to generate a random number.
+   * Can only be executed when the game ends.
+   */
   function generateNumberWinner() public payable onEndGame {
     uint numberRandomBytes = 7;
     uint delay = 0;
@@ -103,10 +113,12 @@ contract Casino is usingOraclize {
     bytes32 queryId = oraclize_newRandomDSQuery(delay, numberRandomBytes, callbackGas);
   }
 
-  /// @notice Callback function that gets called by oraclize when the random number is generated
-  /// @param _queryId The query id that was generated to proofVerify
-  /// @param _result String that contains the number generated
-  /// @param _proof A string with a proof code to verify the authenticity of the number generation
+  /**
+   * @notice Callback function that gets called by oraclize when the random number is generated
+   * @param _queryId The query id that was generated to proofVerify
+   * @param _result String that contains the number generated
+   * @param _proof A string with a proof code to verify the authenticity of the number generation
+   */
   function __callback(
     bytes32 _queryId,
     string _result,
@@ -120,8 +132,10 @@ contract Casino is usingOraclize {
     distributePrizes();
   }
 
-  /// @notice Sends the corresponding Ether to each winner then deletes all the
-  /// players for the next game and resets the `totalBet` and `numberOfBets`
+  /**
+   * @notice Sends the corresponding Ether to each winner then deletes all the
+   * players for the next game and resets the `totalBet` and `numberOfBets`
+   */
   function distributePrizes() private onEndGame {
     uint winnerEtherAmount = totalBet / numberBetPlayers[numberWinner].length; // How much each winner gets
 
