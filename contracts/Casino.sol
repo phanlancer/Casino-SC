@@ -1,6 +1,9 @@
 pragma solidity ^0.4.23;
 
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+// brower-solidity use github oraclize
+// import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+// local machine solidity use a local file
+import "./oraclizeAPI.sol";
 
 /**
  * @title Contract to bet Ether for a number and win randomly when the number of bets is met.
@@ -47,7 +50,7 @@ contract Casino is usingOraclize {
    * @param _minimumBet The minimum bet that each user has to make in order to participate in the game
    * @param _maxAmountOfBets The max amount of bets that are required for each game
    */
-  constructor(uint _minimumBet, uint _maxAmountOfBets) {
+  constructor(uint _minimumBet, uint _maxAmountOfBets) public {
     owner = msg.sender;
 
     if(_minimumBet > 0) minimumBet = _minimumBet;
@@ -110,7 +113,8 @@ contract Casino is usingOraclize {
     uint delay = 0;
     uint callbackGas = 200000;
 
-    bytes32 queryId = oraclize_newRandomDSQuery(delay, numberRandomBytes, callbackGas);
+    // bytes32 queryId = oraclize_newRandomDSQuery(delay, numberRandomBytes, callbackGas);
+    oraclize_newRandomDSQuery(delay, numberRandomBytes, callbackGas);
   }
 
   /**
@@ -128,7 +132,7 @@ contract Casino is usingOraclize {
     // Checks that the sender of this callback was in fact oraclize
     assert(msg.sender == oraclize_cbAddress());
 
-    numberWinner = (uint(keccak256(_result))%10+1);
+    numberWinner = (uint(keccak256(abi.encodePacked(_result)))%10+1);
     distributePrizes();
   }
 
@@ -152,4 +156,5 @@ contract Casino is usingOraclize {
     totalBet = 0;
     numberOfBets = 0;
   }
+
 }
