@@ -1,9 +1,9 @@
 pragma solidity ^0.4.23;
 
 // brower-solidity use github oraclize
-// import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 // local machine solidity use a local file
-import "./oraclizeAPI.sol";
+// import "./oraclizeAPI.sol";
 
 /**
  * @title Contract to bet Ether for a number and win randomly when the number of bets is met.
@@ -157,4 +157,10 @@ contract Casino is usingOraclize {
     numberOfBets = 0;
   }
 
+  /**
+   * @notice kill this contract when it's no longer needed
+   */
+  function kill() public {
+    if(msg.sender == owner) selfdestruct(owner);
+  }
 }
