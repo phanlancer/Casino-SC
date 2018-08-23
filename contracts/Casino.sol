@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 // brower-solidity use github oraclize
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+// import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
 // local machine solidity use a local file
 // import "./oraclizeAPI.sol";
 
@@ -9,7 +9,7 @@ import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
  * @title Contract to bet Ether for a number and win randomly when the number of bets is met.
  * @author phanlancer
  */
-contract Casino is usingOraclize {
+contract Casino {
   address owner;
 
   // The minimum bet a user has to make to participate in the game
@@ -56,9 +56,6 @@ contract Casino is usingOraclize {
     if(_minimumBet > 0) minimumBet = _minimumBet;
     if(_maxAmountOfBets > 0 && _maxAmountOfBets <= LIMIT_AMOUNT_BETS)
       maxAmountOfBets = _maxAmountOfBets;
-
-    // Set the proof of oraclize in order to make secure random number generations
-    oraclize_setProof(proofType_Ledger);
   }
 
   /**
@@ -109,30 +106,7 @@ contract Casino is usingOraclize {
    * Can only be executed when the game ends.
    */
   function generateNumberWinner() public payable onEndGame {
-    uint numberRandomBytes = 7;
-    uint delay = 0;
-    uint callbackGas = 200000;
-
-    // bytes32 queryId = oraclize_newRandomDSQuery(delay, numberRandomBytes, callbackGas);
-    oraclize_newRandomDSQuery(delay, numberRandomBytes, callbackGas);
-  }
-
-  /**
-   * @notice Callback function that gets called by oraclize when the random number is generated
-   * @param _queryId The query id that was generated to proofVerify
-   * @param _result String that contains the number generated
-   * @param _proof A string with a proof code to verify the authenticity of the number generation
-   */
-  function __callback(
-    bytes32 _queryId,
-    string _result,
-    bytes _proof
-  ) public oraclize_randomDS_proofVerify(_queryId, _result, _proof) onEndGame {
-
-    // Checks that the sender of this callback was in fact oraclize
-    assert(msg.sender == oraclize_cbAddress());
-
-    numberWinner = (uint(keccak256(abi.encodePacked(_result)))%10+1);
+    numberWinner = block.number % 10 + 1;
     distributePrizes();
   }
 
@@ -158,7 +132,7 @@ contract Casino is usingOraclize {
   }
 
   /**
-   * @notice kill this contract when it's no longer needed
+   * @notice kill this contract whenever you want
    */
   function kill() public {
     if(msg.sender == owner) selfdestruct(owner);
