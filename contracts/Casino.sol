@@ -10,7 +10,7 @@ pragma solidity >0.4.23 <0.6.0;
  * @author phanlancer
  */
 contract Casino {
-  address owner;
+  address payable owner;
 
   // The minimum bet a user has to make to participate in the game
   uint public minimumBet = 100 finney; // Equal to 0.1 ether
@@ -35,7 +35,7 @@ contract Casino {
   address[] public players;
 
   // Each number has an array of players. Associate each number with a bunch of players
-  mapping(uint => address[]) numberBetPlayers;
+  mapping(uint => address payable[]) numberBetPlayers;
 
   // The number that each player has bet for
   mapping(address => uint) playerBetsNumber;
