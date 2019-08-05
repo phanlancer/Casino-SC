@@ -618,58 +618,58 @@ contract usingOraclize {
     dynargs[0] = args[0];
     return oraclize_query(timestamp, datasource, dynargs, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[1] args, uint gaslimit) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[1] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](1);
     dynargs[0] = args[0];
     return oraclize_query(datasource, dynargs, gaslimit);
   }
 
-  function oraclize_query(string datasource, bytes[2] args) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[2] args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](2);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
     return oraclize_query(datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[2] args) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string datasource, bytes[2] args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](2);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
     return oraclize_query(timestamp, datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[2] args, uint gaslimit) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string datasource, bytes[2] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](2);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
     return oraclize_query(timestamp, datasource, dynargs, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[2] args, uint gaslimit) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[2] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](2);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
     return oraclize_query(datasource, dynargs, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[3] args) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[3] args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](3);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
     dynargs[2] = args[2];
     return oraclize_query(datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[3] args) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string datasource, bytes[3] args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](3);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
     dynargs[2] = args[2];
     return oraclize_query(timestamp, datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[3] args, uint gaslimit) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string datasource, bytes[3] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](3);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
     dynargs[2] = args[2];
     return oraclize_query(timestamp, datasource, dynargs, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[3] args, uint gaslimit) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[3] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](3);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
@@ -677,7 +677,7 @@ contract usingOraclize {
     return oraclize_query(datasource, dynargs, gaslimit);
   }
 
-  function oraclize_query(string datasource, bytes[4] args) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[4] args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](4);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
