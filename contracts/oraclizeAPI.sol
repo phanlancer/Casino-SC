@@ -709,7 +709,7 @@ contract usingOraclize {
     dynargs[3] = args[3];
     return oraclize_query(datasource, dynargs, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[5] args) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[5] args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](5);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
@@ -718,7 +718,7 @@ contract usingOraclize {
     dynargs[4] = args[4];
     return oraclize_query(datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[5] args) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string datasource, bytes[5] args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](5);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
@@ -727,7 +727,7 @@ contract usingOraclize {
     dynargs[4] = args[4];
     return oraclize_query(timestamp, datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[5] args, uint gaslimit) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string datasource, bytes[5] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](5);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
@@ -736,7 +736,7 @@ contract usingOraclize {
     dynargs[4] = args[4];
     return oraclize_query(timestamp, datasource, dynargs, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[5] args, uint gaslimit) oraclizeAPI internal returns (bytes32 id) {
+  function oraclize_query(string datasource, bytes[5] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](5);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
@@ -746,21 +746,21 @@ contract usingOraclize {
     return oraclize_query(datasource, dynargs, gaslimit);
   }
 
-  function oraclize_cbAddress() oraclizeAPI internal returns (address){
+  function oraclize_cbAddress() internal oraclizeAPI returns (address){
     return oraclize.cbAddress();
   }
-  function oraclize_setProof(byte proofP) oraclizeAPI internal {
+  function oraclize_setProof(byte proofP) internal oraclizeAPI {
     return oraclize.setProofType(proofP);
   }
-  function oraclize_setCustomGasPrice(uint gasPrice) oraclizeAPI internal {
+  function oraclize_setCustomGasPrice(uint gasPrice) internal oraclizeAPI {
     return oraclize.setCustomGasPrice(gasPrice);
   }
 
-  function oraclize_randomDS_getSessionPubKeyHash() oraclizeAPI internal returns (bytes32){
+  function oraclize_randomDS_getSessionPubKeyHash() internal oraclizeAPI returns (bytes32){
     return oraclize.randomDS_getSessionPubKeyHash();
   }
 
-  function getCodeSize(address _addr) constant internal returns(uint _size) {
+  function getCodeSize(address _addr) internal view returns(uint _size) {
     assembly {
       _size := extcodesize(_addr)
     }
