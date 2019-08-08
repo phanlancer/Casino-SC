@@ -771,7 +771,7 @@ contract usingOraclize {
     uint160 iaddr = 0;
     uint160 b1;
     uint160 b2;
-    for (uint i=2; i<2+2*20; i+=2){
+    for (uint i = 2; i < 2+2*20; i += 2){
       iaddr *= 256;
       b1 = uint160(tmp[i]);
       b2 = uint160(tmp[i+1]);
@@ -809,7 +809,7 @@ contract usingOraclize {
     bytes memory n = bytes(_needle);
     if(h.length < 1 || n.length < 1 || (n.length > h.length))
       return -1;
-    else if(h.length > (2**128 -1))
+    else if(h.length > (2**128 - 1))
       return -1;
     else
     {
