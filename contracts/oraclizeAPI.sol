@@ -1078,7 +1078,7 @@ contract usingOraclize {
 
     require(prefix.length == n_random_bytes, "");
 
-    for (uint256 i=0; i< n_random_bytes; i++) {
+    for (uint256 i = 0; i < n_random_bytes; i++) {
       if (content[i] != prefix[i]) match_ = false;
     }
 
