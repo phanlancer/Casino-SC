@@ -43,8 +43,8 @@ contract OraclizeI {
             external payable returns (bytes32 _id);
   function queryN(uint _timestamp, string memory _datasource, bytes memory _argN) public payable returns (bytes32 _id);
   function queryN_withGasLimit(uint _timestamp, string calldata _datasource, bytes calldata _argN, uint _gaslimit) external payable returns (bytes32 _id);
-  function getPrice(string _datasource) public returns (uint _dsprice);
-  function getPrice(string _datasource, uint gaslimit) public returns (uint _dsprice);
+  function getPrice(string memory _datasource) public returns (uint _dsprice);
+  function getPrice(string memory _datasource, uint gaslimit) public returns (uint _dsprice);
   function setProofType(byte _proofType) external;
   function setCustomGasPrice(uint _gasPrice) external;
   function randomDS_getSessionPubKeyHash() external view returns(bytes32);
