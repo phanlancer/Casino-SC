@@ -265,7 +265,7 @@ library CBOR {
     buf.append(value);
   }
 
-  function encodeString(Buffer.buffer memory buf, string value) internal pure {
+  function encodeString(Buffer.buffer memory buf, string memory value) internal pure {
     encodeType(buf, MAJOR_TYPE_STRING, bytes(value).length);
     buf.append(bytes(value));
   }
