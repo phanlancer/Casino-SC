@@ -315,7 +315,7 @@ contract usingOraclize {
 
     _;
   }
-  modifier coupon(string code){
+  modifier coupon(string memory code){
     oraclize = OraclizeI(OAR.getAddress());
     _;
   }
