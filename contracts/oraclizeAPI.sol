@@ -122,7 +122,7 @@ library Buffer {
     * @param data The data to append.
     * @return The original buffer.
     */
-  function append(buffer memory buf, bytes data) internal pure returns(buffer memory) {
+  function append(buffer memory buf, bytes memory data) internal pure returns(buffer memory) {
     if(data.length + buf.buf.length > buf.capacity) {
       resize(buf, max(buf.capacity, data.length) * 2);
     }
@@ -260,7 +260,7 @@ library CBOR {
     }
   }
 
-  function encodeBytes(Buffer.buffer memory buf, bytes value) internal pure {
+  function encodeBytes(Buffer.buffer memory buf, bytes memory value) internal pure {
     encodeType(buf, MAJOR_TYPE_BYTES, value.length);
     buf.append(value);
   }
