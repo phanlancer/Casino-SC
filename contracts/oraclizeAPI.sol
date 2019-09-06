@@ -360,15 +360,15 @@ contract usingOraclize {
     return false;
   }
 
-  function __callback(bytes32 myid, string result) public {
+  function __callback(bytes32 myid, string memory result) public {
     __callback(myid, result, new bytes(0));
   }
-  function __callback(bytes32 myid, string result, bytes proof) public {
+  function __callback(bytes32 myid, string memory result, bytes memory proof) public {
     return;
     myid; result; proof; // Silence compiler warnings
   }
 
-  function oraclize_getPrice(string datasource) internal oraclizeAPI returns (uint){
+  function oraclize_getPrice(string memory datasource) internal oraclizeAPI returns (uint){
     return oraclize.getPrice(datasource);
   }
 
