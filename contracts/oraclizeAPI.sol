@@ -372,7 +372,7 @@ contract usingOraclize {
     return oraclize.getPrice(datasource);
   }
 
-  function oraclize_getPrice(string datasource, uint gaslimit) internal oraclizeAPI returns (uint){
+  function oraclize_getPrice(string memory datasource, uint gaslimit) internal oraclizeAPI returns (uint){
     return oraclize.getPrice(datasource, gaslimit);
   }
 
