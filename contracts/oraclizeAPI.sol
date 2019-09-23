@@ -386,7 +386,8 @@ contract usingOraclize {
     if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
     return oraclize.query.value(price)(timestamp, datasource, arg);
   }
-  function oraclize_query(uint timestamp, string datasource, string arg, uint gaslimit) internal oraclizeAPI returns (bytes32 id){
+  function oraclize_query(uint timestamp, string memory datasource, string memory arg, uint gaslimit)
+    internal oraclizeAPI returns (bytes32 id){
     uint price = oraclize.getPrice(datasource, gaslimit);
     if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
     return oraclize.query_withGasLimit.value(price)(timestamp, datasource, arg, gaslimit);
