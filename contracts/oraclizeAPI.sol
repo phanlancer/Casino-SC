@@ -432,7 +432,8 @@ contract usingOraclize {
     bytes memory args = stra2cbor(argN);
     return oraclize.queryN.value(price)(timestamp, datasource, args);
   }
-  function oraclize_query(uint timestamp, string memory datasource, string[] memory argN, uint gaslimit) internal oraclizeAPI returns (bytes32 id){
+  function oraclize_query(uint timestamp, string memory datasource, string[] memory argN, uint gaslimit)
+    internal oraclizeAPI returns (bytes32 id){
     uint price = oraclize.getPrice(datasource, gaslimit);
     if (price > 1 ether + tx.gasprice*gaslimit) return 0; // unexpectedly high price
     bytes memory args = stra2cbor(argN);
