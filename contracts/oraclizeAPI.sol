@@ -445,7 +445,7 @@ contract usingOraclize {
     bytes memory args = stra2cbor(argN);
     return oraclize.queryN_withGasLimit.value(price)(0, datasource, args, gaslimit);
   }
-  function oraclize_query(string datasource, string[1] args) internal oraclizeAPI returns (bytes32 id) {
+  function oraclize_query(string memory datasource, string[1] memory args) internal oraclizeAPI returns (bytes32 id) {
     string[] memory dynargs = new string[](1);
     dynargs[0] = args[0];
     return oraclize_query(datasource, dynargs);
