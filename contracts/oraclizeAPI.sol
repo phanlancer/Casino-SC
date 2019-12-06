@@ -594,7 +594,7 @@ contract usingOraclize {
     dynargs[4] = args[4];
     return oraclize_query(datasource, dynargs, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[] argN) internal oraclizeAPI returns (bytes32 id){
+  function oraclize_query(string memory datasource, bytes[] memory argN) internal oraclizeAPI returns (bytes32 id){
     uint price = oraclize.getPrice(datasource);
     if (price > 1 ether + tx.gasprice*200000) return 0; // unexpectedly high price
     bytes memory args = ba2cbor(argN);
