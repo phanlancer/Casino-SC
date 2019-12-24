@@ -619,17 +619,17 @@ contract usingOraclize {
     bytes memory args = ba2cbor(argN);
     return oraclize.queryN_withGasLimit.value(price)(0, datasource, args, gaslimit);
   }
-  function oraclize_query(string datasource, bytes[1] args) internal oraclizeAPI returns (bytes32 id) {
+  function oraclize_query(string memory datasource, bytes[1] memory args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](1);
     dynargs[0] = args[0];
     return oraclize_query(datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[1] args) internal oraclizeAPI returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string memory datasource, bytes[1] memory args) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](1);
     dynargs[0] = args[0];
     return oraclize_query(timestamp, datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string datasource, bytes[1] args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string memory datasource, bytes[1] memory args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](1);
     dynargs[0] = args[0];
     return oraclize_query(timestamp, datasource, dynargs, gaslimit);
