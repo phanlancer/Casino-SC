@@ -712,7 +712,8 @@ contract usingOraclize {
     dynargs[3] = args[3];
     return oraclize_query(timestamp, datasource, dynargs);
   }
-  function oraclize_query(uint timestamp, string memory datasource, bytes[4] memory args, uint gaslimit) internal oraclizeAPI returns (bytes32 id) {
+  function oraclize_query(uint timestamp, string memory datasource, bytes[4] memory args, uint gaslimit)
+    internal oraclizeAPI returns (bytes32 id) {
     bytes[] memory dynargs = new bytes[](4);
     dynargs[0] = args[0];
     dynargs[1] = args[1];
