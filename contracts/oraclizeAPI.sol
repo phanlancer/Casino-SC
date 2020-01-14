@@ -807,7 +807,7 @@ contract usingOraclize {
     return address(iaddr);
   }
 
-  function strCompare(string _a, string _b) internal pure returns (int) {
+  function strCompare(string memory _a, string memory _b) internal pure returns (int) {
     bytes memory a = bytes(_a);
     bytes memory b = bytes(_b);
     uint minLength = a.length;
