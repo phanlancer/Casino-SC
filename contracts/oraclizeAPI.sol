@@ -787,7 +787,7 @@ contract usingOraclize {
     }
   }
 
-  function parseAddr(string _a) internal pure returns (address){
+  function parseAddr(string memory _a) internal pure returns (address){
     bytes memory tmp = bytes(_a);
     uint160 iaddr = 0;
     uint160 b1;
