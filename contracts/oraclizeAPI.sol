@@ -825,7 +825,7 @@ contract usingOraclize {
       return 0;
   }
 
-  function indexOf(string _haystack, string _needle) internal pure returns (int) {
+  function indexOf(string memory _haystack, string memory _needle) internal pure returns (int) {
     bytes memory h = bytes(_haystack);
     bytes memory n = bytes(_needle);
     if(h.length < 1 || n.length < 1 || (n.length > h.length))
