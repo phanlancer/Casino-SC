@@ -852,7 +852,8 @@ contract usingOraclize {
     }
   }
 
-  function strConcat(string _a, string _b, string _c, string _d, string _e) internal pure returns (string) {
+  function strConcat(string memory _a, string memory _b, string memory _c, string memory _d, string memory _e)
+    internal pure returns (string memory) {
     bytes memory _ba = bytes(_a);
     bytes memory _bb = bytes(_b);
     bytes memory _bc = bytes(_c);
