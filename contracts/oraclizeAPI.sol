@@ -879,7 +879,7 @@ contract usingOraclize {
     return strConcat(_a, _b, _c, "", "");
   }
 
-  function strConcat(string _a, string _b) internal pure returns (string) {
+  function strConcat(string memory _a, string memory _b) internal pure returns (string memory) {
     return strConcat(_a, _b, "", "", "");
   }
 
