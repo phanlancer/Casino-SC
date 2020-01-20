@@ -889,7 +889,7 @@ contract usingOraclize {
   }
 
   // parseInt(parseFloat*10^_b)
-  function parseInt(string _a, uint _b) internal pure returns (uint) {
+  function parseInt(string memory _a, uint _b) internal pure returns (uint) {
     bytes memory bresult = bytes(_a);
     uint mint = 0;
     bool decimals = false;
