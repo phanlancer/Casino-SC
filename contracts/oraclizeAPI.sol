@@ -884,7 +884,7 @@ contract usingOraclize {
   }
 
   // parseInt
-  function parseInt(string _a) internal pure returns (uint) {
+  function parseInt(string memory _a) internal pure returns (uint) {
     return parseInt(_a, 0);
   }
 
