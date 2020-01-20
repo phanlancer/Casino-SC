@@ -925,7 +925,7 @@ contract usingOraclize {
   }
 
   using CBOR for Buffer.buffer;
-  function stra2cbor(string[] arr) internal pure returns (bytes) {
+  function stra2cbor(string[] memory arr) internal pure returns (bytes memory) {
     safeMemoryCleaner();
     Buffer.buffer memory buf;
     Buffer.init(buf, 1024);
