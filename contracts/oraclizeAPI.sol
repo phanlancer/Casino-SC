@@ -950,7 +950,7 @@ contract usingOraclize {
   }
 
   string oraclize_network_name;
-  function oraclize_setNetworkName(string _network_name) internal {
+  function oraclize_setNetworkName(string memory _network_name) internal {
     oraclize_network_name = _network_name;
   }
 
