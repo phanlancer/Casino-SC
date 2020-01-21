@@ -937,7 +937,7 @@ contract usingOraclize {
     return buf.buf;
   }
 
-  function ba2cbor(bytes[] arr) internal pure returns (bytes) {
+  function ba2cbor(bytes[] memory arr) internal pure returns (bytes memory) {
     safeMemoryCleaner();
     Buffer.buffer memory buf;
     Buffer.init(buf, 1024);
