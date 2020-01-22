@@ -954,7 +954,7 @@ contract usingOraclize {
     oraclize_network_name = _network_name;
   }
 
-  function oraclize_getNetworkName() internal view returns (string) {
+  function oraclize_getNetworkName() internal view returns (string memory) {
     return oraclize_network_name;
   }
 
