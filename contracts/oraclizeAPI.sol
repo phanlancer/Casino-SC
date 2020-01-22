@@ -1013,7 +1013,7 @@ contract usingOraclize {
   mapping(bytes32=>bytes32) oraclize_randomDS_args;
   mapping(bytes32=>bool) oraclize_randomDS_sessionKeysHashVerified;
 
-  function verifySig(bytes32 tosignh, bytes dersig, bytes pubkey) internal returns (bool){
+  function verifySig(bytes32 tosignh, bytes memory dersig, bytes memory pubkey) internal returns (bool){
     bool sigok;
     address signer;
 
