@@ -959,7 +959,7 @@ contract usingOraclize {
   }
 
   function oraclize_newRandomDSQuery(uint _delay, uint _nbytes, uint _customGasLimit) internal returns (bytes32){
-    require((_nbytes > 0) && (_nbytes <= 32));
+    require((_nbytes > 0) && (_nbytes <= 32), "no bytes");
     // Convert from seconds to ledger timer ticks
     _delay *= 10;
     bytes memory nbytes = new bytes(1);
